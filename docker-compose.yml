@@ -12,10 +12,10 @@ services:
         depends_on:
             - repo-name-governer 
 
-    repo-name-governer:
-        image: github-poc-repo-name-governer:step3
+    repo-name-governor:
+        image: github-poc-repo-name-governor:step3
         build:
-            context: ./repo-name-governer 
+            context: ./repo-name-governor 
             dockerfile: ./Dockerfile
         ports:
             - 8080:8080
