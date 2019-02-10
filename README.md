@@ -61,3 +61,6 @@ We will evolve a design which leads to this.
 
 * *Note that you would want to ensure that you whitelist githubs source ip on this request and utilise a shared secret when configuring the webhook*
 
+To continue following along `git checkout PART2-handle-change-events`
+
+
