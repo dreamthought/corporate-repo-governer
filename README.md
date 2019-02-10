@@ -64,4 +64,27 @@ We will evolve a design which leads to this.
 
 To continue following along `git checkout PART2-handle-change-events`
 
+## Part 2 - Handling Change Events
 
+Before we get going again, ensure that your github app is installed for your oganisation.
+
+* You should visit https://github.com/organizations/*YOUR ORG/apps
+Replace "YOUR ORG", as required*
+* Ensure that you are subscribed to "Repository" events
+* Run the app with `docker-compose up --build` and set up ngrok tunnels (you may also expose it publically using any other means) 
+* Create a new repository.
+* You will see a payload with the following structure come through:
+
+  "repositories\_added": [
+    {
+      "id": 169968345,
+      "node_id": "MDEwOlJlcG9zaXRvcnkxNjk5NjgzNDU=",
+      "name": "repo_creation_webhook_test",
+      "full_name": "dreamthought/repo_creation_webhook_test",
+      "private": false
+    }
+  ],
+  
+* We have implemented an entity which encapsulates a github entity in `GithubEntity` and unit tests to ensure that this recognises repository\_added events. Since this is conceptual dmonstration it is fairly make shift, but you may view the spec tests to undstand its contract.
+
+To continue following along have a look at PART3-poc-create-issue-in-rails-app
