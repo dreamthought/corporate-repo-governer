@@ -40,4 +40,7 @@ We will evolve a design which leads to this.
 * Implement a controller which prettyprints the webhook and proves integration.
 * _Given more time, I'd usually test to a contract first_
 
+## Create a webhook
 
+* Assuming you have an organization, LargeCorp probably does, create you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [https://github.com/organizations/dreamthought/settings/apps here]
+* Your rails app will need to be publically accessible by github. For expediency I have used ngrok in front of a docker container with my rails app, to mitigate the security risk of ngrok 
