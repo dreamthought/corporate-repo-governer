@@ -88,3 +88,15 @@ Replace "YOUR ORG", as required*
 * We have implemented an entity which encapsulates a github entity in `GithubEntity` and unit tests to ensure that this recognises repository\_added events. Since this is conceptual dmonstration it is fairly make shift, but you may view the spec tests to undstand its contract.
 
 To continue following along have a look at PART3-poc-create-issue-in-rails-app
+
+## PART3 Create Issues in GitHub
+
+We're now going to switch gears and build a spring microservice which has the single responsibility of validating the name of a newly created repository and inform the creator of any violations via a github issues. We assume that our large corporate partner, LargeCorp, has JEE development going on, so we'll implement this portion in Spring.
+
+We'll be using github-app token signing as this is a standalone server-to-server process without any individual identity.
+
+### Setup 
+* To get started you'll need to download the private key of your app and make a note of its app id from  [https://github.com/organizations/*YOUR ORG*/apps] We'll need this later in order to generate a JWT
+* Install spring's cli (Java not RoR) (You can use [https://sdkman.io sdkman] for this)
+ 
+
