@@ -1,6 +1,7 @@
 version: '3'
 services:
     webhook-delegator:
+        image: github-poc-webhook-delegator:step2
         build:
             context: ./webhook-delegator
             dockerfile: ./Dockerfile
