@@ -8,13 +8,14 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+*/log/*
+*/tmp/*
+!*/log/.keep
+!*/tmp/.keep
 
 
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+*/config/master.key
+*.swp
