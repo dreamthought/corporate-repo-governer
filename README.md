@@ -25,7 +25,7 @@ We are going to create a webhook which allows us to inspect the shape of events 
 
 These are also documted [https://developer.github.com/v3/activity/events/types/#repositoryevent here]
 
-# Create scafold
+## Create scafold
 Assuming that LargeCorp use Rails and prefer it in their stack, we've created a  minimal rails application to serve API requests, with:
 `rails new --api --skip-active-record --skip-active-storage webhook-delegator`
 
@@ -34,4 +34,10 @@ This will provide an http service which listens for incoming HTTP requsts and de
 Webhooks provide a notificaiton which is ideally non-blocking, thus handling this asynchronously is a good idea.
 
 We will evolve a design which leads to this.
+
+## A webhook echo service
+
+* Implement a controller which prettyprints the webhook and proves integration.
+* _Given more time, I'd usually test to a contract first_
+
 
