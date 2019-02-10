@@ -12,6 +12,12 @@ While much of this can be infered from looking at the project or enforced throug
 
 They would like to police this in a gentle way at the earilest possible moment.
 
+# Structure
+
+This repository may be considered a mono-repository of sorts with two interdependent microservices. I would usually keep them totally decoupled or use subtrees between repositories if I had to, however this structure suites the illustrative purpose of this exercise. The services are split along single responsibility lines:
+* A minimally blocking webhook listener and new repository event dispatcher. This also filters for domain events we care about.
+* An asynchronously processing Java service which validates repository names.
+
 # What are we going to build?
 
 I am going to take you a journey which solves evil corp's problem:
