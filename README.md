@@ -56,9 +56,9 @@ We will evolve a design which leads to this.
 
         Given that the TestInc organisation exists in Github
 
-        When we are told that TestInc has a new repository  _the webhook would get called_
+        When we are told that TestInc has a new repository  (the webhook would get called)
 
-        Then we should respond appropriately _we respond with a 204_
+        Then we should respond appropriately (we respond with a 204)
 
 * *Note that you would want to ensure that you whitelist githubs source ip on this request and utilise a shared secret when configuring the webhook*
 
