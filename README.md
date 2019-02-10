@@ -46,4 +46,17 @@ We will evolve a design which leads to this.
 * Your rails app will need to be publically accessible by github. For expediency I have used ngrok in front of a docker container with my rails app, to mitigate the security risk of ngrok 
 * _Note that I had planned to use the alpine container but ended up using a larger one so that I could bundle install direclty on the container. It's usually a better idea to have a separate build container and a shared volume._
 * You can spin up the echo application using `docker-compose up` from the root level folder. This will expose port 3000, which can be further exposed using ngrok, should you choose to use this approach.
+* Running `rails cucumber` in the webhook-dispatcher will result in running some simple integration tests. What we promise to do in the language of LargeCorp's Governance Team is to fulfill the following scenario:
+
+  Feature: I want to know about newly created repositories
+    So that I they may be checked for compliance
+    For LargeCorp's legal team
+
+    Scenario: Ensuring that github recieves an appropriate response from us
+        Given that the TestInc organisation exists in Github
+
+        When we are told that TestInc has a new repository  _the webhook would get called_
+
+        Then we should respond appropriately _we respond with a 204_
+
 
