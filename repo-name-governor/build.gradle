@@ -28,4 +28,13 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+	testCompile('io.cucumber:cucumber-java:3.0.2')
+	testCompile('io.cucumber:cucumber-java8:3.0.2')
+	testCompile('io.cucumber:cucumber-junit:3.0.2')
+	testCompile('io.cucumber:cucumber-core:3.0.2')
+	testCompile('io.cucumber:gherkin:5.0.0')
+	testCompile('io.cucumber:cucumber-spring:3.0.2')
+	testCompile('com.jayway.jsonpath:json-path:2.4.0')
+	testCompile('org.hamcrest:hamcrest-all:1.3')
+
 }
