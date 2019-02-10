@@ -59,4 +59,5 @@ We will evolve a design which leads to this.
 
         Then we should respond appropriately _we respond with a 204_
 
+* *Note that you would want to ensure that you whitelist githubs source ip on this request and utilise a shared secret when configuring the webhook*
 
