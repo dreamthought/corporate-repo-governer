@@ -1,0 +1,75 @@
+{
+  "action": "removed",
+  "installation": {
+    "id": 656483,
+    "account": {
+      "login": "dreamthought",
+      "id": 47470821,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ3NDcwODIx",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/47470821?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dreamthought",
+      "html_url": "https://github.com/dreamthought",
+      "followers_url": "https://api.github.com/users/dreamthought/followers",
+      "following_url": "https://api.github.com/users/dreamthought/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dreamthought/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dreamthought/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dreamthought/subscriptions",
+      "organizations_url": "https://api.github.com/users/dreamthought/orgs",
+      "repos_url": "https://api.github.com/users/dreamthought/repos",
+      "events_url": "https://api.github.com/users/dreamthought/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dreamthought/received_events",
+      "type": "Organization",
+      "site_admin": false
+    },
+    "repository_selection": "all",
+    "access_tokens_url": "https://api.github.com/installations/656483/access_tokens",
+    "repositories_url": "https://api.github.com/installation/repositories",
+    "html_url": "https://github.com/organizations/dreamthought/settings/installations/656483",
+    "app_id": 25047,
+    "target_id": 47470821,
+    "target_type": "Organization",
+    "permissions": {
+      "contents": "write",
+      "issues": "write",
+      "metadata": "read"
+    },
+    "events": [
+      "commit_comment"
+    ],
+    "created_at": "2019-02-10T02:25:33.000Z",
+    "updated_at": "2019-02-10T02:25:33.000Z",
+    "single_file_name": null
+  },
+  "repository_selection": "all",
+  "repositories_added": [],
+  "repositories_removed": [
+    {
+      "id": 169967702,
+      "node_id": "MDEwOlJlcG9zaXRvcnkxNjk5Njc3MDI=",
+      "name": "repository-creation-hook-snoop",
+      "full_name": "dreamthought/repository-creation-hook-snoop",
+      "private": false
+    }
+  ],
+  "sender": {
+    "login": "fiq",
+    "id": 236293,
+    "node_id": "MDQ6VXNlcjIzNjI5Mw==",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/236293?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/fiq",
+    "html_url": "https://github.com/fiq",
+    "followers_url": "https://api.github.com/users/fiq/followers",
+    "following_url": "https://api.github.com/users/fiq/following{/other_user}",
+    "gists_url": "https://api.github.com/users/fiq/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/fiq/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/fiq/subscriptions",
+    "organizations_url": "https://api.github.com/users/fiq/orgs",
+    "repos_url": "https://api.github.com/users/fiq/repos",
+    "events_url": "https://api.github.com/users/fiq/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/fiq/received_events",
+    "type": "User",
+    "site_admin": false
+  }
+}
