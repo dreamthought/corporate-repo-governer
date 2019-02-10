@@ -1,9 +1,21 @@
 version: '3'
 services:
     webhook-delegator:
-        image: github-poc-webhook-delegator:step2
+        image: github-poc-webhook-delegator:step3
         build:
             context: ./webhook-delegator
             dockerfile: ./Dockerfile
         ports:
             - 3000:3000
+        links:
+            - repo-name-governer 
+        depends_on:
+            - repo-name-governer 
+
+    repo-name-governer:
+        image: github-poc-repo-name-governer:step3
+        build:
+            context: ./repo-name-governer 
+            dockerfile: ./Dockerfile
+        ports:
+            - 8080:8080
