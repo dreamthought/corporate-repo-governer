@@ -48,11 +48,12 @@ We will evolve a design which leads to this.
 * You can spin up the echo application using `docker-compose up` from the root level folder. This will expose port 3000, which can be further exposed using ngrok, should you choose to use this approach.
 * Running `rails cucumber` in the webhook-dispatcher will result in running some simple integration tests. What we promise to do in the language of LargeCorp's Governance Team is to fulfill the following scenario:
 
-  Feature: I want to know about newly created repositories
-    So that I they may be checked for compliance
-    For LargeCorp's legal team
+  Feature: I want to know about newly created repositories  
+    So that I they may be checked for compliance  
+    For LargeCorp's legal team  
 
     Scenario: Ensuring that github recieves an appropriate response from us
+
         Given that the TestInc organisation exists in Github
 
         When we are told that TestInc has a new repository  _the webhook would get called_
