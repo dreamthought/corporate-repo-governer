@@ -14,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.example'
+group = 'com.largecorp'
 version = '0.0.1-SNAPSHOT'
 // FIXME: While I'd like to use 1.11 springcli's bootstrap was built against 1.8
 sourceCompatibility = '1.8'

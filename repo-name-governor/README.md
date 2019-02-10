@@ -1,4 +1,4 @@
-# Repository Name Governer Microservice
+# Repository Name Governor Microservice
 
 ## Raf's DISCLAIMER
 * Think of this entire project as mono-repo of interdepenecies.
