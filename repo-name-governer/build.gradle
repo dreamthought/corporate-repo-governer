@@ -16,7 +16,8 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.11'
+// FIXME: While I'd like to use 1.11 springcli's bootstrap was built against 1.8
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
