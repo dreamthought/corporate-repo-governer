@@ -1,4 +1,5 @@
-FROM ruby:2.6.1-alpine
+FROM ruby:2.6.1-stretch
 WORKDIR /opt/webhook-delegator
 COPY . /opt/webhook-delegator
-CMD gem install rails && rails s 
+RUN bundle install
+CMD rails s 
