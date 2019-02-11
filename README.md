@@ -110,8 +110,9 @@ We'll be using github-app token signing as this is a standalone server-to-server
  * export the following environmental with your APP\_ID: `GITHUB_APP_ID=1234` Besure to substitute in your own app id
  * You should also copy your pem file into the pem directory in the repo-name-governor project
  * Spin it up again with `docker-compose up --build`
+* Visit [http://localhost:8080/swagger-ui.html#/repository-validation-controller] to experiment with sending paylaods to Github
+* This stack should respond to create events and attempt to create an issue; you'll currently see a 401 in the docker logs due to JWT signing issues.
 
- 
 
 
 
