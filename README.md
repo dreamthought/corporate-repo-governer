@@ -29,7 +29,7 @@ I am going to take you a journey which solves evil corp's problem:
 
 We are going to create a webhook which allows us to inspect the shape of events fired by github when creating a repository.
 
-These are also documted [here](https://developer.github.com/v3/activity/events/types/#repositoryevent)
+These are also documented [here](https://developer.github.com/v3/activity/events/types/#repositoryevent)
 
 ## Create scafold
 Assuming that LargeCorp use Rails and prefer it in their stack, we've created a  minimal rails application to serve API requests, with:
@@ -102,8 +102,8 @@ We're now going to switch gears and build a spring microservice which has the si
 We'll be using github-app token signing as this is a standalone server-to-server process without any individual identity.
 
 ### Setup 
-* To get started you'll need to download the private key of your app and make a note of its app id from  [https://github.com/organizations/*YOUR ORG*/apps] We'll need this later in order to generate a JWT
-* Install spring's cli (Java not RoR) (You can use [https://sdkman.io sdkman] for this)
+* To get started you'll need to download the private key of your app and make a note of its app id from  *https://<span/>github.com/organizations/*YOUR ORG*/apps* We'll need this later in order to generate a JWT
+* Install spring's cli (Java not RoR) (You can use [sdkman](https://sdkman.io) for this.
 * In order for health monitoring of services, we use spring-boot actuator. Spring it up with `docker-compose up --build` and connect to *youhost*:8080/actuator/info
 * We have define some of our expected behaviour in `find . -name '*.feature'` although the cucumber tests have not yet been completed due to time constraints.
 * To run the full stack:
