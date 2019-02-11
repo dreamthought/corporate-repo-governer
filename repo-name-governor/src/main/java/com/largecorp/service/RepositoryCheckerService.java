@@ -56,7 +56,7 @@ public class RepositoryCheckerService {
 
     private Boolean checkName(String repositoryName) {
         Matcher m = VALID_STRUCTURE_PATTERN.matcher(repositoryName);
-        if (!m.matches() && m.groupCount() != 4) {
+        if (!m.matches() || m.groupCount() != 4) {
             return false;
         }
         String organisation = m.group(1);
