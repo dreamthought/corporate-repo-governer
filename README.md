@@ -105,4 +105,4 @@ We'll be using github-app token signing as this is a standalone server-to-server
 * To get started you'll need to download the private key of your app and make a note of its app id from  [https://github.com/organizations/*YOUR ORG*/apps] We'll need this later in order to generate a JWT
 * Install spring's cli (Java not RoR) (You can use [https://sdkman.io sdkman] for this)
 * In order for health monitoring of services, we use spring-boot actuator. Spring it up with `docker-compose up --build` and connect to *youhost*:8080/actuator/info
-
+* We have define some of our expected behaviour in `find . -name '*.feature'` although the cucumber tests have not yet been completed due to time constraints.
