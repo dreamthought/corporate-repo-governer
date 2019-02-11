@@ -10,28 +10,28 @@ It has been observed that years of _free for all_ have resulted in it being very
 
 While much of this can be infered from looking at the project or enforced through best efforts, Large Corp have observed that this doesn't often happen.
 
-They would like to police this in a gentle way at the earilest possible moment.
+They would like to police this in a gentle way at the earliest possible moment.
 
 # What are we going to build?
 
-I am going to take you a journey which solves evil corp's problem:
+I am going to take you on a journey which solves Large Corp's problem:
 1. Implementing a webhook listening for repository creation.
-1. Delegating the responsibily of checking naming confomity to another service
+1. Delegating the responsibily of checking naming conformity to another service
 1. Asynchronously creating an issue which reminds the maintainers to correct this.
 
 #Part 1 Creating a Webhook
 
 We are going to create a webhook which allows us to inspect the shape of events fired by github when creating a repository.
 
-These are also documted [here](https://developer.github.com/v3/activity/events/types/#repositoryevent)
+These are also documented [here](https://developer.github.com/v3/activity/events/types/#repositoryevent)
 
 ## Create scafold
 Assuming that LargeCorp use Rails and prefer it in their stack, we've created a  minimal rails application to serve API requests, with:
 `rails new --api --skip-active-record --skip-active-storage webhook-delegator`
 
-This will provide an http service which listens for incoming HTTP requsts and delegates them to another service which validates the repository name and creates an issue if required.
+This will provide an http service which listens for incoming HTTP requests and delegates them to another service which validates the repository name and creates an issue if required.
 
-Webhooks provide a notificaiton which is ideally non-blocking, thus handling this asynchronously is a good idea.
+Webhooks provide a notification which is ideally non-blocking, thus handling this asynchronously is a good idea.
 
 We will evolve a design which leads to this.
 
@@ -42,17 +42,17 @@ We will evolve a design which leads to this.
 
 ## Create a webhook
 
-* Assuming you have an organization, LargeCorp probably does, create you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [here](https://github.com/organizations/dreamthought/settings/apps)
+* Assuming you have an organization, LargeCorp probably does, you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [here](https://github.com/organizations/dreamthought/settings/apps)
 * Your rails app will need to be publically accessible by github. For expediency I have used ngrok in front of a docker container with my rails app, to mitigate the security risk of ngrok 
 * _Note that I had planned to use the alpine container but ended up using a larger one so that I could bundle install direclty on the container. It's usually a better idea to have a separate build container and a shared volume._
 * You can spin up the echo application using `docker-compose up` from the root level folder. This will expose port 3000, which can be further exposed using ngrok, should you choose to use this approach.
 * Running `rails cucumber` in the webhook-dispatcher will result in running some simple integration tests. What we promise to do in the language of LargeCorp's Governance Team is to fulfill the following scenario:
 
   Feature: I want to know about newly created repositories  
-    So that I they may be checked for compliance  
+    So that they may be checked for compliance  
     For LargeCorp's legal team  
 
-    Scenario: Ensuring that github recieves an appropriate response from us
+    Scenario: Ensuring that github receives an appropriate response from us
 
         Given that the TestInc organisation exists in Github
 
@@ -85,6 +85,6 @@ Replace "YOUR ORG", as required*
     }
   ],
   
-* We have implemented an entity which encapsulates a github entity in `GithubEntity` and unit tests to ensure that this recognises repository\_added events. Since this is conceptual dmonstration it is fairly make shift, but you may view the spec tests to undstand its contract.
+* We have implemented an entity which encapsulates a github entity in `GithubEntity` and unit tests to ensure that this recognises repository\_added events. Since this is a conceptual demonstration it is fairly make shift, but you may view the spec tests to understand its contract.
 
 To continue following along have a look at PART3-poc-create-issue-in-rails-app
