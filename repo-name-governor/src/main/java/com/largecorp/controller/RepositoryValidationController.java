@@ -26,9 +26,9 @@ public class RepositoryValidationController {
      * Tests a name event. This is why I am leading more and more towards DRPC these days
      * FIXME: Forced RESTfulness
      */
-    @PostMapping("/name/{repositoryName}")
+    @PostMapping("/name/{org}/{repository}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void checkRepositoryCreatedEvent(@PathVariable("repositoryName") String repositoryName, @RequestBody NameChangeEvent body) {
+    public void checkRepositoryCreatedEvent(@PathVariable("org") String org, @PathVariable("repository") String repositoryName, @RequestBody NameChangeEvent body) {
         repositoryCheckerService.asynchronouslyCheckName(body);
     }
 }
