@@ -35,6 +35,7 @@ dependencies {
 			'io.jsonwebtoken:jjwt-jackson:0.10.5')
 	compile('org.projectlombok:lombok:1.18.4')
 	compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+	implementation 'com.auth0:java-jwt:3.7.0'
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 	testCompile('io.cucumber:cucumber-java:3.0.2')

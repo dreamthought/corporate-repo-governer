@@ -1,5 +1,8 @@
 package com.largecorp.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
@@ -13,8 +16,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.Key;
 import java.sql.Date;
 import java.time.Instant;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -41,7 +46,8 @@ public class GitHubJWTProvider {
         String pem = readPemFile( githubPrivateKeyLocation );
         // Java needs better base64 'file' support
         pem = pem.replace("-----BEGIN RSA PRIVATE KEY-----", "");
-        key = pem.replace("-----END RSA PRIVATE KEY-----","");
+        pem = pem.replace("-----END RSA PRIVATE KEY-----","");
+        key = new String(Base64.getDecoder().decode(pem));
     }
 
     /**
@@ -70,15 +76,26 @@ public class GitHubJWTProvider {
     private String rebuildJwt() {
         Instant issuedAt = Instant.now();
         expiry = issuedAt.plusSeconds(TOKEN_DURATION_SECS);
+        //FIXME: Remove one of the alternatives
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(key);
+            String token = JWT.create()
+                .withIssuer(githubAppId)
+                .withExpiresAt(Date.from(expiry))
+                .withIssuedAt(Date.from(issuedAt))
+                .sign(algorithm);
+            return token;
+        } catch (JWTCreationException e){
+            // FIXME: To save cycles and complete this exercise,
+            // I've not bothered to Base64 decode
+            String jwt = Jwts.builder().
+                setIssuer(githubAppId).
+                setIssuedAt(Date.from(issuedAt)).
+                setExpiration(Date.from(expiry)).
+                signWith(SignatureAlgorithm.RS256, key).compact();
 
-        // FIXME: To save cycles and complete this exercise,
-        // I've not bothered to Base64 decode
-        String jwt = Jwts.builder().
-            setIssuer(githubAppId).
-            setIssuedAt(Date.from(issuedAt)).
-            setExpiration(Date.from(expiry)).
-            signWith(SignatureAlgorithm.ES256, key).compact();
-        return jwt;
+            return jwt;
+        }
     }
 
     /**
