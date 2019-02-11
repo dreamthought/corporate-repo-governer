@@ -1,32 +1,43 @@
 package com.largecorp.service;
 
+import com.google.common.collect.Lists;
 import com.largecorp.client.GitHubIssueClient;
 import com.largecorp.model.NameChangeEvent;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Profile("async-disabled")
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+
+//@AutoConfigureMockMvc
+@RunWith(MockitoJUnitRunner.class)
 public class RepositoryCheckerServiceTest {
 
-    @Autowired
-    RepositoryCheckerService underTest;
-
-    @Autowired
+    @Mock
     GitHubIssueClient client;
 
+    @InjectMocks
+    RepositoryCheckerService underTest = new RepositoryCheckerService();
+
+    @Before
+    public void setup() {
+        underTest.setApprovedApplications(Lists.newArrayList("webapp"));
+        underTest.setApprovedTechnologies(Lists.newArrayList("django"));
+        underTest.setApprovedDomains(Lists.newArrayList("media"));
+    }
 
     @Test
     public void aWellFormedNameShouldNotRaiseAnIssue() {
         NameChangeEvent event = NameChangeEvent.builder()
-            .repositoryName("webapp-django-media-transcoding")
+            .repositoryName("org/webapp-django-media-transcoding")
             .build();
 
         underTest.asynchronouslyCheckName(event);
+        verify(client, never()).createIssue(anyString(), anyString());
     }
 }
