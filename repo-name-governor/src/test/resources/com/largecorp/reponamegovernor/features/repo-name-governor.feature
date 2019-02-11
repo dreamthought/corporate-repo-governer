@@ -5,7 +5,7 @@ Feature: Validating repositories are named in line with Governance (Tm)
 
   Scenario Outline: A user creates a microservice in an approved language with a well named repository
     Given a user needs a new <APP_TYPE>
-    When  a repository is created named <APP_TYPE>-<TECH>-<DOMAIN>-application
+    When  a repository is created named org/<APP_TYPE>-<TECH>-<DOMAIN>-application
     Then an issue in github will not be created
     Examples:
       | APP_TYPE | TECH | DOMAIN |
