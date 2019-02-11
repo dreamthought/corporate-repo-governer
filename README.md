@@ -3,7 +3,7 @@
 # Introduction
 We assume that our client has a similar use case to Large Corp who prefer to have their development teams conform to a meaningful taxonomy when creating repositories. 
 
-It has been observed that years of free for all have resulted in it being very hard to answer the following question:
+It has been observed that years of _free for all_ have resulted in it being very hard to answer the following questions:
 * Which team or bounded context owns a repository?
 * What type of software is this? Is it a prototype, a utility, a library, a web ui, a webservice or a monolith?
 * What primary language is it implemented in?
