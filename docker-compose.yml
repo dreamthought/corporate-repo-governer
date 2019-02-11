@@ -8,14 +8,17 @@ services:
         ports:
             - 3000:3000
         links:
-            - repo-name-governer 
+            - repo-name-governor 
         depends_on:
-            - repo-name-governer 
+            - repo-name-governor 
 
     repo-name-governor:
         image: github-poc-repo-name-governor:step3
         build:
             context: ./repo-name-governor 
             dockerfile: ./Dockerfile
+        environment:
+            - GITHUB_APP_ID=${GITHUB_APP_ID}
+            - GITHUB_PRIVATE_KEY_FILE=/pem/github.pem
         ports:
             - 8080:8080

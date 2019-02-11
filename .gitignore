@@ -13,9 +13,10 @@
 !*/log/.keep
 !*/tmp/.keep
 
-
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 */config/master.key
 *.swp
+# let's not commit private keys
+**/github.pem
