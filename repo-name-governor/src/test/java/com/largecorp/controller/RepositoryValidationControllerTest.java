@@ -28,7 +28,6 @@ public class RepositoryValidationControllerTest {
     public void itShouldAcceptOnAGoodPayload() throws Exception {
         String repositoryName = "microserivce-spring-finance-tickscraper";
         NameChangeEvent event = NameChangeEvent.builder()
-            .issueUrl("http://github.com/my/issue")
             .repositoryName(repositoryName).build();
         String jsonBody = serialiseEventToJson(event);
 
