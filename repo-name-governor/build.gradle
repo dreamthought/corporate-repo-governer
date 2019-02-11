@@ -24,6 +24,11 @@ repositories {
 }
 
 dependencies {
+	compile 'io.jsonwebtoken:jjwt-api:0.10.5'
+	runtime 'io.jsonwebtoken:jjwt-impl:0.10.5',
+			// Uncomment the next line if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
+			//'org.bouncycastle:bcprov-jdk15on:1.60',
+			'io.jsonwebtoken:jjwt-jackson:0.10.5'
 	compile('org.projectlombok:lombok:1.18.4')
 	compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
@@ -36,7 +41,6 @@ dependencies {
 	testCompile('io.cucumber:cucumber-spring:3.0.2')
 	testCompile('com.jayway.jsonpath:json-path:2.4.0')
 	testCompile('org.hamcrest:hamcrest-all:1.3')
-
 }
 
 

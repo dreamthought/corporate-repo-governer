@@ -1,6 +1,8 @@
 package com.largecorp.controller;
 
 import com.largecorp.model.NameChangeEvent;
+import com.largecorp.service.RepositoryCheckerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,9 @@ import javax.annotation.PostConstruct;
 @RestController
 @RequestMapping("/repository")
 public class RepositoryValidationController {
+
+    @Autowired
+    RepositoryCheckerService repositoryCheckerService;
 
     /**
      * Tests a name event. This is why I am leading more and more towards DRPC these days
