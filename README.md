@@ -81,8 +81,10 @@ To continue following along `git checkout PART2-handle-change-events`
 
 Before we get going again, ensure that your github app is installed for your oganisation.
 
-* You should visit https://github.com/organizations/*YOUR ORG/apps
+* You should visit https://<span></span>github.com/organizations/*YOUR ORG/apps
+
 Replace "YOUR ORG", as required*
+
 * Ensure that you are subscribed to "Repository" events
 * Run the app with `docker-compose up --build` and set up ngrok tunnels (you may also expose it publically using any other means) 
 * Create a new repository.
@@ -109,7 +111,7 @@ We're now going to switch gears and build a spring microservice which has the si
 We'll be using github-app token signing as this is a standalone server-to-server process without any individual identity.
 
 ### Setup 
-* To get started you'll need to download the private key of your app and make a note of its app id from  https://github.com/organizations/*YOUR ORG*/apps We'll need this later in order to generate a JWT
+* To get started you'll need to download the private key of your app and make a note of its app id from  https://<span/>github.com/organizations/*YOUR ORG*/apps We'll need this later in order to generate a JWT
 * Install spring's cli (Java not RoR) (You can use [sdkman](https://sdkman.io) for this)
 * In order for health monitoring of services, we use spring-boot actuator. Spring it up with `docker-compose up --build` and connect to *youhost*:8080/actuator/info
 * We have define some of our expected behaviour in `find . -name '*.feature'` although the cucumber tests have not yet been completed due to time constraints.
@@ -123,6 +125,6 @@ We'll be using github-app token signing as this is a standalone server-to-server
 
 # Caveats
 
-* Since this is a server to server application for a corporate entity, I chose to use a github APP and signed JWT tokens generated from the RSA key provided by github. Sadly due to the structure of this, I've had trouble getting it imported into the key store. Due to library avilablily I can't easily work with the base64 decoded varient. I've looked at the sources of two public open source projects providing Java GitHub API's [github-api](https://github.com/kohsuke/github-api.git) and [jcabi-github](https://github.com/jcabi/jcabi-github jcabi-github). Both of these appear to aovid dealing with JWTs; clearly an area where JVM using partners may have issues. Given a little longer, I'm sure I would have found a work around.
+* Since this is a server to server application for a corporate entity, I chose to use a github APP and signed JWT tokens generated from the RSA key provided by github. Sadly due to the structure of this, I've had trouble getting it imported into the key store. Due to library avilablily I can't easily work with the base64 decoded varient. I've looked at the sources of two public open source projects providing Java GitHub API's [github-api](https://github.com/kohsuke/github-api.git) and [jcabi-github](https://github.com/jcabi/jcabi-github). Both of these appear to aovid dealing with JWTs; clearly an area where JVM using partners may have issues. Given a little longer, I'm sure I would have found a work around.
 
 Give me a shout if you have questions at raf AT dreamthought.com
