@@ -23,7 +23,7 @@ I am going to take you a journey which solves evil corp's problem:
 
 We are going to create a webhook which allows us to inspect the shape of events fired by github when creating a repository.
 
-These are also documted [https://developer.github.com/v3/activity/events/types/#repositoryevent here]
+These are also documted [here](https://developer.github.com/v3/activity/events/types/#repositoryevent)
 
 ## Create scafold
 Assuming that LargeCorp use Rails and prefer it in their stack, we've created a  minimal rails application to serve API requests, with:
@@ -42,7 +42,7 @@ We will evolve a design which leads to this.
 
 ## Create a webhook
 
-* Assuming you have an organization, LargeCorp probably does, create you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [https://github.com/organizations/dreamthought/settings/apps here]
+* Assuming you have an organization, LargeCorp probably does, create you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [here](https://github.com/organizations/dreamthought/settings/apps)
 * Your rails app will need to be publically accessible by github. For expediency I have used ngrok in front of a docker container with my rails app, to mitigate the security risk of ngrok 
 * _Note that I had planned to use the alpine container but ended up using a larger one so that I could bundle install direclty on the container. It's usually a better idea to have a separate build container and a shared volume._
 * You can spin up the echo application using `docker-compose up` from the root level folder. This will expose port 3000, which can be further exposed using ngrok, should you choose to use this approach.
