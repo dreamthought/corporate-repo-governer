@@ -23,7 +23,7 @@ public class GitHubJWTProvider {
     private String key;
     private String jwt;
     private Instant expiry;
-    private static final Integer TOKEN_DURATION_SECS = 10*60;
+    private static final Integer TOKEN_DURATION_SECS = 10*60; // 10 Minutes
     Logger logger = LoggerFactory.getLogger(GitHubJWTProvider.class);
 
     @Value("${github.app.id}")
