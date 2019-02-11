@@ -36,7 +36,7 @@ I am going to take you a journey which solves evil corp's problem:
 
 We are going to create a webhook which allows us to inspect the shape of events fired by github when creating a repository.
 
-These are also documted [https://developer.github.com/v3/activity/events/types/#repositoryevent here]
+These are also documted [here](https://developer.github.com/v3/activity/events/types/#repositoryevent)
 
 ## Create scafold
 Assuming that LargeCorp use Rails and prefer it in their stack, we've created a  minimal rails application to serve API requests, with:
@@ -55,7 +55,7 @@ We will evolve a design which leads to this.
 
 ## Create a webhook
 
-* Assuming you have an organization, LargeCorp probably does, create you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [https://github.com/organizations/dreamthought/settings/apps here]
+* Assuming you have an organization, LargeCorp probably does, create you can then create a github app (which appears to be the advised way of handling fine-grained access tokens). You may do so [here](https://github.com/organizations/dreamthought/settings/apps)
 * Your rails app will need to be publically accessible by github. For expediency I have used ngrok in front of a docker container with my rails app, to mitigate the security risk of ngrok 
 * _Note that I had planned to use the alpine container but ended up using a larger one so that I could bundle install direclty on the container. It's usually a better idea to have a separate build container and a shared volume._
 * You can spin up the echo application using `docker-compose up` from the root level folder. This will expose port 3000, which can be further exposed using ngrok, should you choose to use this approach.
@@ -109,8 +109,8 @@ We're now going to switch gears and build a spring microservice which has the si
 We'll be using github-app token signing as this is a standalone server-to-server process without any individual identity.
 
 ### Setup 
-* To get started you'll need to download the private key of your app and make a note of its app id from  [https://github.com/organizations/*YOUR ORG*/apps] We'll need this later in order to generate a JWT
-* Install spring's cli (Java not RoR) (You can use [https://sdkman.io sdkman] for this)
+* To get started you'll need to download the private key of your app and make a note of its app id from  https://github.com/organizations/*YOUR ORG*/apps We'll need this later in order to generate a JWT
+* Install spring's cli (Java not RoR) (You can use [sdkman](https://sdkman.io) for this)
 * In order for health monitoring of services, we use spring-boot actuator. Spring it up with `docker-compose up --build` and connect to *youhost*:8080/actuator/info
 * We have define some of our expected behaviour in `find . -name '*.feature'` although the cucumber tests have not yet been completed due to time constraints.
 * To run the full stack:
@@ -123,6 +123,6 @@ We'll be using github-app token signing as this is a standalone server-to-server
 
 # Caveats
 
-* Since this is a server to server application for a corporate entity, I chose to use a github APP and signed JWT tokens generated from the RSA key provided by github. Sadly due to the structure of this, I've had trouble getting it imported into the key store. Due to library avilablily I can't easily work with the base64 decoded varient. I've looked at the sources of two public open source projects providing Java GitHub API's (https://github.com/kohsuke/github-api.git github-api) and [https://github.com/jcabi/jcabi-github jcabi-github]. Both of these appear to aovid dealing with JWTs; clearly an area where JVM using partners may have issues. Given a little longer, I'm sure I would have found a work around.
+* Since this is a server to server application for a corporate entity, I chose to use a github APP and signed JWT tokens generated from the RSA key provided by github. Sadly due to the structure of this, I've had trouble getting it imported into the key store. Due to library avilablily I can't easily work with the base64 decoded varient. I've looked at the sources of two public open source projects providing Java GitHub API's [github-api](https://github.com/kohsuke/github-api.git) and [jcabi-github](https://github.com/jcabi/jcabi-github jcabi-github). Both of these appear to aovid dealing with JWTs; clearly an area where JVM using partners may have issues. Given a little longer, I'm sure I would have found a work around.
 
 Give me a shout if you have questions at raf AT dreamthought.com
