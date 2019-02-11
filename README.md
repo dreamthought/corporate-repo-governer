@@ -10,7 +10,7 @@ It has been observed that years of _free for all_ have resulted in it being very
 
 While much of this can be infered from looking at the project or enforced through best efforts, Large Corp have observed that this doesn't often happen.
 
-They would like to police this in a gentle way at the earilest possible moment.
+They would like to police this in a gentle way at the earliest possible moment.
 
 
 # Structure
