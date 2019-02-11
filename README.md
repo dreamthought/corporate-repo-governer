@@ -12,13 +12,20 @@ While much of this can be infered from looking at the project or enforced throug
 
 They would like to police this in a gentle way at the earilest possible moment.
 
+
 # Structure
 
 This repository may be considered a mono-repository of sorts with two interdependent microservices. I would usually keep them totally decoupled or use subtrees between repositories if I had to, however this structure suites the illustrative purpose of this exercise. The services are split along single responsibility lines:
 * A minimally blocking webhook listener and new repository event dispatcher. This also filters for domain events we care about.
 * An asynchronously processing Java service which validates repository names.
 
+# Playing along
+
+* To play along you can incrementally checkout specific branches.
+
 # What are we going to build?
+
+![diagram](/docs/images/sequence-diagram.png)
 
 I am going to take you a journey which solves evil corp's problem:
 1. Implementing a webhook listening for repository creation.
@@ -114,5 +121,8 @@ We'll be using github-app token signing as this is a standalone server-to-server
 * This stack should respond to create events and attempt to create an issue; you'll currently see a 401 in the docker logs due to JWT signing issues.
 
 
+# Caveats
 
+* Since this is a server to server application for a corporate entity, I chose to use a github APP and signed JWT tokens generated from the RSA key provided by github. Sadly due to the structure of this, I've had trouble getting it imported into the key store. Due to library avilablily I can't easily work with the base64 decoded varient. I've looked at the sources of two public open source projects providing Java GitHub API's (https://github.com/kohsuke/github-api.git github-api) and [https://github.com/jcabi/jcabi-github jcabi-github]. Both of these appear to aovid dealing with JWTs; clearly an area where JVM using partners may have issues. Given a little longer, I'm sure I would have found a work around.
 
+Give me a shout if you have questions at raf AT dreamthought.com
