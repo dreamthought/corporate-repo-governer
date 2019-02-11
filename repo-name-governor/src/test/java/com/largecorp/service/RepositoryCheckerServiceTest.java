@@ -25,7 +25,6 @@ public class RepositoryCheckerServiceTest {
     public void aWellFormedNameShouldNotRaiseAnIssue() {
         NameChangeEvent event = NameChangeEvent.builder()
             .repositoryName("webapp-django-media-transcoding")
-            .issueUrl("http://github.example.com/issues")
             .build();
 
         underTest.asynchronouslyCheckName(event);
