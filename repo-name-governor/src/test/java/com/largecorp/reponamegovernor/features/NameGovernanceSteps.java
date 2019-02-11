@@ -1,11 +1,15 @@
 package com.largecorp.reponamegovernor.features;
 
+import com.largecorp.client.GitHubIssueClient;
 import com.largecorp.controller.RepositoryValidationController;
 import com.largecorp.reponamegovernor.features.steps.World;
+import com.largecorp.service.GitHubJWTProvider;
 import cucumber.api.java8.En;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -19,6 +23,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(RepositoryValidationController.class)
 public class NameGovernanceSteps implements En {
 
+    @MockBean
+    GitHubJWTProvider gitHubJWTProvider;
+
+    @MockBean
+    GitHubIssueClient gitHubIssueClient;
+
     // TODO encapsulate in world
     @Autowired
     MockMvc mockMvc;
@@ -30,7 +40,7 @@ public class NameGovernanceSteps implements En {
             world.setApplicationType(applicationType);
         });
 
-        When("^a repository is created named ([\\w+-]+)$", (String repositoryName) -> {
+        When("^a repository is created named (\\w+/[\\w+-]+)$", (String repositoryName) -> {
             // Write code here that turns the phrase above into concrete actions
             world.setRepositoryName( repositoryName);
             String[] constituents = repositoryName.split("/-/");
@@ -42,8 +52,13 @@ public class NameGovernanceSteps implements En {
         });
 
         Then("an issue in github will not be created", () -> {
-            mockMvc.perform(post("/repository/name/microserivce-spring-finance-tickscraper")).andExpect(
-                status().is(204)
+            String repository = world.getRepositoryName();
+            String fixture = String.format("{ \"repositoryName\": \"%s\" }", repository);
+            mockMvc.perform(
+                post("/repository/name/" + repository)
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(fixture))
+                .andExpect(status().is(202)
             );
         });
 
