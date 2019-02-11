@@ -2,13 +2,15 @@ package com.largecorp.reponamegovernor.features;
 
 import com.largecorp.controller.RepositoryValidationController;
 import com.largecorp.reponamegovernor.features.steps.World;
-import cucumber.api.PendingException;
 import cucumber.api.java8.En;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Step definitions for validating assertions about repository naming scenarios
@@ -20,6 +22,7 @@ public class NameGovernanceSteps implements En {
     // TODO encapsulate in world
     @Autowired
     MockMvc mockMvc;
+
     public NameGovernanceSteps(@Autowired World world) {
 
         Given(".*a user needs a new (\\w+)$", (String applicationType) -> {
@@ -39,8 +42,9 @@ public class NameGovernanceSteps implements En {
         });
 
         Then("an issue in github will not be created", () -> {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
+            mockMvc.perform(post("/repository/name/microserivce-spring-finance-tickscraper")).andExpect(
+                status().is(204)
+            );
         });
 
     }
