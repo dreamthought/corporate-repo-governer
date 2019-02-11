@@ -106,3 +106,12 @@ We'll be using github-app token signing as this is a standalone server-to-server
 * Install spring's cli (Java not RoR) (You can use [https://sdkman.io sdkman] for this)
 * In order for health monitoring of services, we use spring-boot actuator. Spring it up with `docker-compose up --build` and connect to *youhost*:8080/actuator/info
 * We have define some of our expected behaviour in `find . -name '*.feature'` although the cucumber tests have not yet been completed due to time constraints.
+* To run the full stack:
+ * export the following environmental with your APP\_ID: `GITHUB_APP_ID=1234` Besure to substitute in your own app id
+ * You should also copy your pem file into the pem directory in the repo-name-governor project
+ * Spin it up again with `docker-compose up --build`
+
+ 
+
+
+
