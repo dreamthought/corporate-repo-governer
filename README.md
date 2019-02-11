@@ -10,13 +10,13 @@ It has been observed that years of free for all have resulted in it being very h
 
 While much of this can be infered from looking at the project or enforced through best efforts, Large Corp have observed that this doesn't often happen.
 
-They would like to police this in a gentle way at the earilest possible moment.
+They would like to police this in a gentle way at the earliest possible moment.
 
 # What are we going to build?
 
-I am going to take you a journey which solves evil corp's problem:
+I am going to take you on a journey which solves Large Corp's problem:
 1. Implementing a webhook listening for repository creation.
-1. Delegating the responsibily of checking naming confomity to another service
+1. Delegating the responsibily of checking naming conformity to another service
 1. Asynchronously creating an issue which reminds the maintainers to correct this.
 
 Now ```git checkout PART1-implement-listener```
