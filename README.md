@@ -113,6 +113,6 @@ We'll be using github-app token signing as this is a standalone server-to-server
 * Visit [http://localhost:8080/swagger-ui.html#/repository-validation-controller] to experiment with sending paylaods to Github
 * This stack should respond to create events and attempt to create an issue; you'll currently see a 401 in the docker logs due to JWT signing issues.
 
-
+Now go back to the master branch!
 
 
